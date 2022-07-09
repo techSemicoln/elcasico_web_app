@@ -1,3 +1,4 @@
+import 'package:elclasico_web/modules/booking/booking_confirmation.dart';
 import 'package:elclasico_web/utilities/app_text.dart';
 import 'package:elclasico_web/utilities/colors.dart';
 import 'package:flutter/material.dart';
@@ -77,9 +78,18 @@ class _BookingPageState extends State<BookingPage> {
                           ],
                         ),
                         actions: [
-                          AppText.SubHeading(text: 'Cancel', size: 13, color: Colors.blueGrey),
+                          GestureDetector(
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                              child: AppText.SubHeading(text: 'Cancel', size: 13, color: Colors.blueGrey)),
                           SizedBox(width: 30,),
-                          AppText.SubHeading(text: 'Yes, Confirm', fontWeight: FontWeight.bold, size: 13, color: ThemeColors.highlightColor)
+                          GestureDetector(
+                              onTap: (){
+                                Navigator.pop(context);
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> BookingConfirmation()));
+                          },
+                              child: AppText.SubHeading(text: 'Yes, Confirm', fontWeight: FontWeight.bold, size: 13, color: ThemeColors.highlightColor))
                         ],
                       );
                         });
@@ -118,7 +128,7 @@ class _BookingPageState extends State<BookingPage> {
                         onTap: (){
                           Navigator.pop(context);
                         },
-                        child: const Icon(Icons.keyboard_arrow_left_outlined, color: Colors.blueGrey,)),
+                        child: const Icon(Icons.keyboard_backspace_sharp, color: Colors.blueGrey,)),
                     GestureDetector(
                         onTap: (){
                           Navigator.pop(context);
